@@ -1,0 +1,57 @@
+.SignInBtn{
+    padding-top:20px;
+    padding-right:20px;
+}
+
+.box {
+    border: 2px solid black;   
+    border-radius: 4px;
+    margin:20px;   
+    padding: 1rem;
+    text-align: center;
+    width:15%
+    }
+
+
+/* .Modules{
+    text-align: center;
+    display: block;
+    justify-content:center;
+} */
+
+.Modules{
+    margin: auto;
+    padding: 10px;
+    text-align: center ;
+}
+
+.Module-title{
+    border: 2px solid black;   
+    border-radius: 4px;
+    margin: auto;   
+    padding: 0.4rem;
+    text-align: center;
+    width:10%;
+   
+}
+
+.Module-text{
+    border: 2px solid black;   
+    border-radius: 18px;
+    margin: auto;   
+    padding: 0.4rem;
+    text-align: center;
+    width:20%;
+}
+
+.Module-img{
+    height: 25px;
+
+}
+.Module-circle{
+    margin: auto;
+ height: 40px;
+ width: 65px;
+ border: 2px solid black; 
+ border-radius: 50%;
+}
