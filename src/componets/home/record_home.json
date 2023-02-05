@@ -1,19 +1,18 @@
 [
-    {
-        "id": 1,
-        "source": "./assets/videoimg.jpg"
-    },
-    {
-        "id": 2,
-        "source": "./assets/videoimg.jpg"
-    },
-    {
-        "id": 3,
-        "source": "./assets/videoimg.jpg"
-    },
-    {
-        "id": 4,
-        "source": "./assets/videoimg.jpg"
-    }
-
+  {
+    "id": 1,
+    "source": "./assets/demovideo.mp4"
+  },
+  {
+    "id": 2,
+    "source": "./assets/demovideo.mp4"
+  },
+  {
+    "id": 3,
+    "source": "./assets/demovideo.mp4"
+  },
+  {
+    "id": 4,
+    "source": "./assets/demovideo.mp4"
+  }
 ]

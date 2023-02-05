@@ -25,7 +25,11 @@ function Index() {
 
   useEffect(() => {
     allPortfilio();
-  }, []);
+  },);
+
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
   return (
     <>
@@ -46,10 +50,10 @@ function Index() {
                     <strong>{tutorial.portfolioName}</strong>
                   </h5>
                   <p className="card-text">{tutorial.portfolioDescription}</p>
-                  <button className="btn btn-primary" onClick={() => navigate("/account/tutorial/tutorialPage", { state: { portfolioSlug: tutorial.portfolioSlug } })}>
+                  <button className="btn btn-primary" onClick={() => {navigate("/account/tutorial/tutorialPage", { state: { portfolioSlug: tutorial.portfolioSlug } }) ; refreshPage()} }>
                     Start Learning
                   </button>
-                  <button type="button" className="btn-close" aria-label="Close" onClick={() => delPortfilio(tutorial.portfolioSlug)}></button>
+                  <button type="button" className="btn-close" aria-label="Close" onClick={ () => {delPortfilio(tutorial.portfolioSlug) ; refreshPage()}  } ></button>
                 </div>
               </div>
             );

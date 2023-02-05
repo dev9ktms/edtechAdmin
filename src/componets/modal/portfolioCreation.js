@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
+
 function Index() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -16,7 +17,9 @@ function Index() {
   const handleClose = () => {
    
     setShow(false);
+
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,7 +57,7 @@ function Index() {
       <center>
         <div className="btn-holder">
           <Button variant="primary" onClick={handleShow}>
-            + Add Portfolio
+           + Add Portfolio
           </Button>
         </div>
       </center>
