@@ -2,13 +2,11 @@ import React from "react";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useLocation } from "react-router-dom";
 
 function VideoUpload() {
-    const navigate = useNavigate();
 
     const location = useLocation();
     const portfolioSlug = location.state.portfolioSlug;
