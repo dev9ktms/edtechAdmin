@@ -13,7 +13,7 @@ const ModuleVideoPage = () => {
   useEffect(() => {
     getVideo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },);
+  },[]);
 
   const getVideo = async () => {
     const response = await fetch(
