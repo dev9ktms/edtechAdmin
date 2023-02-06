@@ -25,7 +25,7 @@ function Index() {
 
   useEffect(() => {
     allPortfilio();
-  },);
+  },[]);
 
   function refreshPage() {
     window.location.reload(false);
