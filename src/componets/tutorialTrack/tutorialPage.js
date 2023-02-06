@@ -26,7 +26,7 @@ const TutorialPage = () => {
   useEffect(() => {
     getPortfilio();
     // eslint-disable-next-line
-  },);
+  },[]);
 
 
   const arr = data.modules;
