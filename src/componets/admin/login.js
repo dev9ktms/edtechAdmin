@@ -48,7 +48,7 @@ const Login = () => {
         <>
             <Nav />
             <form method="POST" onSubmit={handleSubmit}>
-                <h3>Log in admin</h3>
+                <h3>Log As Admin</h3>
 
                 <div className="mb-3">
                     <label>UserEmail</label>
