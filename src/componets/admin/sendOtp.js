@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Nav from "../nav";
 
-const Login = () => {
+const SendOtp = () => {
     const navigate = useNavigate();
     const [useremail, setUseremail] = useState("");
-    const [password, setPassword] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("https://ed-tech-service-backend.onrender.com/admin/loginadmin", {
+        const response = await fetch("http://localhost:5000/admin/otpsend", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -19,7 +17,7 @@ const Login = () => {
                 "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify({
-                useremail, password,
+                useremail
             }),
         });
         const json = await response.json();
@@ -27,7 +25,7 @@ const Login = () => {
         if (json.success === true) {
             setTimeout(() => {
                 toast.success(
-                    "Admin Login Successfully",
+                    "OTP sent to registered mail",
                     {
                         position: "top-center",
                     }
@@ -35,7 +33,7 @@ const Login = () => {
             }, 100);
             localStorage.setItem("adminToken", json.adminToken);
             setTimeout(() => {
-                navigate("/", { replace: true });
+                navigate("/admin/updatepassword", { replace: true });
             }, 2000);
         } else {
             toast.warn("Invalid Credentials", {
@@ -46,9 +44,9 @@ const Login = () => {
 
     return (
         <>
-            <Nav />
+            
             <form method="POST" onSubmit={handleSubmit}>
-                <h3>Log in admin</h3>
+                
 
                 <div className="mb-3">
                     <label>UserEmail</label>
@@ -63,28 +61,10 @@ const Login = () => {
                         onChange={(e) => setUseremail(e.target.value)}
                     />
                 </div>
-                <div className="mb-3">
-                    <label>Password</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Enter Password"
-                        required
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-
-                <div>
-                    Not Signed Up? <Link to="/admin/signup">Sign Up</Link>
-                </div>
-                <div>
-                    Forgot password<Link to="/admin/sendOTP">Forgot password</Link>
-                </div>
 
                 <div className="d-grid">
                     <button type="submit" className="btn btn-primary">
-                        Sign Up
+                        Send Otp
                     </button>
                 </div>
                 <ToastContainer />
@@ -93,4 +73,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default SendOtp;

@@ -60,6 +60,7 @@ function Index() {
                     Start Learning
                   </button>
                   <button type="button" className="btn-close" aria-label="Close" onClick={() => { delPortfilio(tutorial.portfolioSlug); refreshPage() }} ></button>
+                  <p> Created By : {tutorial.portfolioCreator}</p>
                 </div>
               </div>
             );

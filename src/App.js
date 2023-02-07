@@ -7,6 +7,8 @@ import TutorialPage from "./componets/tutorialTrack/tutorialPage.js";
 import ModuleVideoPage from "./componets/tutorialTrack/moduleVideoPage";
 import AdminSignUp from "./componets/admin/signUp";
 import AdminLogin from "./componets/admin/login";
+import SendOtp from "./componets/admin/sendOtp";
+import UpdatePassword from "./componets/admin/updatepassword";
 import AdminProfile from "./componets/admin/profile";
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
         <Route path="/account/tutorial/tutorialPage/modulevideo" element={<ModuleVideoPage/>} />
         <Route path="/admin/signup" element={<AdminSignUp />} />
         <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/sendOTP" element={<SendOtp />} />
+        <Route path="/admin/updatepassword" element={<UpdatePassword />} />
         <Route path="/admin/profile" element={<AdminProfile/>} />
       </Routes>
     </div>

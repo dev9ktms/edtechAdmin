@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Nav from "../nav";
 
-const Login = () => {
+const UpdatePassword = () => {
     const navigate = useNavigate();
     const [useremail, setUseremail] = useState("");
-    const [password, setPassword] = useState("");
+    const [otp, setOtp] = useState("");
+    const [npassword, setNpassword] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("https://ed-tech-service-backend.onrender.com/admin/loginadmin", {
+        const response = await fetch("http://localhost:5000/admin/passwordreset", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -19,7 +19,7 @@ const Login = () => {
                 "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify({
-                useremail, password,
+                useremail, otp, npassword,
             }),
         });
         const json = await response.json();
@@ -27,7 +27,7 @@ const Login = () => {
         if (json.success === true) {
             setTimeout(() => {
                 toast.success(
-                    "Admin Login Successfully",
+                    "Password Reset Success",
                     {
                         position: "top-center",
                     }
@@ -35,7 +35,7 @@ const Login = () => {
             }, 100);
             localStorage.setItem("adminToken", json.adminToken);
             setTimeout(() => {
-                navigate("/", { replace: true });
+                navigate("/admin/login", { replace: true });
             }, 2000);
         } else {
             toast.warn("Invalid Credentials", {
@@ -46,9 +46,9 @@ const Login = () => {
 
     return (
         <>
-            <Nav />
+
             <form method="POST" onSubmit={handleSubmit}>
-                <h3>Log in admin</h3>
+
 
                 <div className="mb-3">
                     <label>UserEmail</label>
@@ -64,33 +64,42 @@ const Login = () => {
                     />
                 </div>
                 <div className="mb-3">
-                    <label>Password</label>
+                    <label>Enter OTP</label>
                     <input
                         type="text"
                         className="form-control"
-                        placeholder="Enter Password"
+                        placeholder="Enter Otp"
                         required
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        maxLength="50"
+                        minLength="2"
+                        value={otp}
+                        onChange={(e) => setOtp(e.target.value)}
                     />
                 </div>
-
-                <div>
-                    Not Signed Up? <Link to="/admin/signup">Sign Up</Link>
+                <div className="mb-3">
+                    <label>Enter New password</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Enter New password"
+                        required
+                        maxLength="50"
+                        minLength="2"
+                        value={npassword}
+                        onChange={(e) => setNpassword(e.target.value)}
+                    />
                 </div>
-                <div>
-                    Forgot password<Link to="/admin/sendOTP">Forgot password</Link>
-                </div>
-
                 <div className="d-grid">
                     <button type="submit" className="btn btn-primary">
-                        Sign Up
+                        Submit
                     </button>
                 </div>
+
+                
                 <ToastContainer />
             </form>
         </>
     )
 }
 
-export default Login
+export default UpdatePassword;
