@@ -15,7 +15,7 @@ function Index() {
   const handleShow = () => setShow(true);
 
   const handleClose = () => {
-   
+
     setShow(false);
 
   };
@@ -57,7 +57,7 @@ function Index() {
       <center>
         <div className="btn-holder">
           <Button variant="primary" onClick={handleShow}>
-           + Add Portfolio
+            + Add Portfolio
           </Button>
         </div>
       </center>

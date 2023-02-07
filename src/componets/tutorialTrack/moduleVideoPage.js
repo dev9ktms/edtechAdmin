@@ -10,11 +10,6 @@ const ModuleVideoPage = () => {
   const portfolioSlug = location.state.portfolioSlug;
   const [datav, setDatav] = useState([]);
 
-  useEffect(() => {
-    getVideo();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
-
   const getVideo = async () => {
     const response = await fetch(
       `https://ed-tech-service-backend.onrender.com/edcourse/getmodule/${portfolioSlug}/${moduleNumber}`,
@@ -26,46 +21,51 @@ const ModuleVideoPage = () => {
     setDatav(json);
   };
 
+  useEffect(() => {
+    getVideo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const arr = datav.videos;
 
   const [toggle, setToggle] = useState("1");
   return (
     <>
       <Nav />
-      <Modal/>
+      <Modal />
       <h2 className="text-capitalize">{datav.moduleName}</h2>
-        {arr && arr.map((item) => {
-          return (
-            <>
-              <main onContextMenu={(e) => e.preventDefault()} className="container" key={item._id}>
+      {arr && arr.map((item) => {
+        return (
+          <>
+            <main onContextMenu={(e) => e.preventDefault()} className="container" key={item._id}>
               <section className="main-video shadow-sm p-3 bg-white mb-5 rounded hover-shadow">
-              <h4 className="text-capitalize text-center" onClick={() => setToggle(item._id)}>{item.videoTitle.slice(0,item.videoTitle.length-4)} </h4>
-                  {toggle === item._id ? (
-                    <>{/* <p>{videoTitle}</p> */}</>
-                  ) : null}
-                </section>
+                <h4 className="text-capitalize text-center" onClick={() => setToggle(item._id)}>{item.videoTitle.slice(0, item.videoTitle.length - 4)} </h4>
+                {toggle === item._id ? (
+                  <>{/* <p>{videoTitle}</p> */}</>
+                ) : null}
+              </section>
 
-                <section className="video-playlist">
-                  {toggle === item._id ? (
-                    <>
-                      {/* <p>{videoLink}</p> */}
-                      <video onContextMenu={(e) => e.preventDefault()}
-                        width="100%"
-                        height="100%"
-                        src={item.videoLink}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        controls
-                        controlsList="nodownload"
-                      ></video>
-                    </>
-                  ) : null}
-                </section>
-              </main>
-            </>
-          );
-        })}
-      
+              <section className="video-playlist">
+                {toggle === item._id ? (
+                  <>
+                    {/* <p>{videoLink}</p> */}
+                    <video onContextMenu={(e) => e.preventDefault()}
+                      width="100%"
+                      height="100%"
+                      src={item.videoLink}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      controls
+                      controlsList="nodownload"
+                    ></video>
+                  </>
+                ) : null}
+              </section>
+            </main>
+          </>
+        );
+      })}
+
     </>
   );
 };

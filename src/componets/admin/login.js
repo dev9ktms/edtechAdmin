@@ -6,7 +6,7 @@ import Nav from "../nav";
 
 const Login = () => {
     const navigate = useNavigate();
-    const [username, setUsername] = useState("");
+    const [useremail, setUseremail] = useState("");
     const [password, setPassword] = useState("");
 
     const handleSubmit = async (e) => {
@@ -19,7 +19,7 @@ const Login = () => {
                 "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify({
-                username, password,
+                useremail, password,
             }),
         });
         const json = await response.json();
@@ -51,16 +51,16 @@ const Login = () => {
                 <h3>Log in admin</h3>
 
                 <div className="mb-3">
-                    <label>UserName</label>
+                    <label>UserEmail</label>
                     <input
                         type="text"
                         className="form-control"
-                        placeholder="Enter Username"
+                        placeholder="Enter UserEmail"
                         required
-                        maxLength="10"
+                        maxLength="50"
                         minLength="2"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        value={useremail}
+                        onChange={(e) => setUseremail(e.target.value)}
                     />
                 </div>
                 <div className="mb-3">

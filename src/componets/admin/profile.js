@@ -19,10 +19,10 @@ const Profile = () => {
     }, []);
     return (
         <>
-            <Nav/>
+            <Nav />
             profile
             <h3>
-                name : {admincred.username}
+                name : {admincred.useremail}
             </h3>
         </>
     )

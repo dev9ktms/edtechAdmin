@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate ,Link} from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Nav from '../nav'
@@ -7,7 +7,7 @@ import Nav from '../nav'
 
 const SignUp = () => {
     const navigate = useNavigate();
-    const [username, setUsername] = useState("");
+    const [useremail, setUseremail] = useState("");
     const [password, setPassword] = useState("");
     const [secretKey, setSecretKey] = useState("");
 
@@ -22,7 +22,7 @@ const SignUp = () => {
                 "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify({
-                username,password,secretKey
+                useremail, password, secretKey
             }),
         });
         const json = await response.json();
@@ -47,21 +47,21 @@ const SignUp = () => {
     }
     return (
         <>
-            <Nav/>
+            <Nav />
             <form method="POST" onSubmit={handleSubmit}>
                 <h3>Sign Up</h3>
 
                 <div className="mb-3">
-                    <label>UserName</label>
+                    <label>UserEmail</label>
                     <input
                         type="text"
                         className="form-control"
-                        placeholder="Enter Username"
+                        placeholder="Enter Useremail"
                         required
-                        maxLength="10"
+                        maxLength="50"
                         minLength="2"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        value={useremail}
+                        onChange={(e) => setUseremail(e.target.value)}
                     />
                 </div>
                 <div className="mb-3">
@@ -86,7 +86,7 @@ const SignUp = () => {
                         onChange={(e) => setSecretKey(e.target.value)}
                     />
                 </div>
-              
+
                 <div>
                     Already Signed Up? <Link to="/admin/login">Login</Link>
                 </div>

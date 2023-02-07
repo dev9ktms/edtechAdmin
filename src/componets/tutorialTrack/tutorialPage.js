@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./consult.css";
-import Nav from '../nav' ;
+import Nav from '../nav';
 import { useNavigate } from "react-router-dom";
 import Modal from '../modal/moduleCreation'
 
@@ -26,7 +26,7 @@ const TutorialPage = () => {
   useEffect(() => {
     getPortfilio();
     // eslint-disable-next-line
-  },[]);
+  }, []);
 
 
   const arr = data.modules;
@@ -46,10 +46,10 @@ const TutorialPage = () => {
           </div>
         </div>
       </div>
-<div className="row justify-content-center">
-      <div className="box w-25">
-        <h4>Tutorial Track</h4>
-      </div>
+      <div className="row justify-content-center">
+        <div className="box w-25">
+          <h4>Tutorial Track</h4>
+        </div>
       </div>
 
       {arr &&

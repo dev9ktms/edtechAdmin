@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./index.css";
 import Nav from '../nav'
 import Modal from '../modal/portfolioCreation.js'
+// import { ToastContainer, toast } from "react-toastify";
 
 function Index() {
   const [data, setData] = useState([]);
@@ -25,9 +26,14 @@ function Index() {
 
   useEffect(() => {
     allPortfilio();
-  },[]);
-
+  }, []);
+  console.log(data)
   function refreshPage() {
+    // setTimeout(() => {
+    //   toast.success("Portfolio Deleted", {
+    //     position: "top-center",
+    //   });
+    // }, 1);
     window.location.reload(false);
   }
 
@@ -50,15 +56,16 @@ function Index() {
                     <strong>{tutorial.portfolioName}</strong>
                   </h5>
                   <p className="card-text">{tutorial.portfolioDescription}</p>
-                  <button className="btn btn-primary" onClick={() => {navigate("/account/tutorial/tutorialPage", { state: { portfolioSlug: tutorial.portfolioSlug } }) ; refreshPage()} }>
+                  <button className="btn btn-primary" onClick={() => { navigate("/account/tutorial/tutorialPage", { state: { portfolioSlug: tutorial.portfolioSlug } }); refreshPage() }}>
                     Start Learning
                   </button>
-                  <button type="button" className="btn-close" aria-label="Close" onClick={ () => {delPortfilio(tutorial.portfolioSlug) ; refreshPage()}  } ></button>
+                  <button type="button" className="btn-close" aria-label="Close" onClick={() => { delPortfilio(tutorial.portfolioSlug); refreshPage() }} ></button>
                 </div>
               </div>
             );
           })}
       </div>
+      {/* <ToastContainer /> */}
     </>
   );
 }
