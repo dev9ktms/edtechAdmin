@@ -81,7 +81,7 @@ const Login = () => {
 
                 <div className="d-grid">
                     <button type="submit" className="btn btn-primary">
-                        Sign Up
+                        Sign In
                     </button>
                 </div>
                 <ToastContainer />
