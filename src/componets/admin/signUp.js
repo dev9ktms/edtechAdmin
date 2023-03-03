@@ -49,7 +49,7 @@ const SignUp = () => {
         <>
             <Nav />
             <form method="POST" onSubmit={handleSubmit}>
-                <h3>Sign Up</h3>
+                <h3><b>Sign Up</b></h3>
 
                 <div className="mb-3">
                     <label>UserEmail</label>
@@ -67,7 +67,7 @@ const SignUp = () => {
                 <div className="mb-3">
                     <label>Password</label>
                     <input
-                        type="text"
+                        type="password"
                         className="form-control"
                         placeholder="Enter Password"
                         required
@@ -78,7 +78,7 @@ const SignUp = () => {
                 <div className="mb-3">
                     <label>SecretKey</label>
                     <input
-                        type="text"
+                        type="password"
                         className="form-control"
                         placeholder="Enter Secret Key"
                         required

@@ -48,7 +48,7 @@ const Login = () => {
         <>
             <Nav />
             <form method="POST" onSubmit={handleSubmit}>
-                <h3>Log in admin</h3>
+                <h3><b>Log In Admin</b></h3>
 
                 <div className="mb-3">
                     <label>UserEmail</label>
@@ -66,7 +66,7 @@ const Login = () => {
                 <div className="mb-3">
                     <label>Password</label>
                     <input
-                        type="text"
+                        type="password"
                         className="form-control"
                         placeholder="Enter Password"
                         required
@@ -84,7 +84,7 @@ const Login = () => {
 
                 <div className="d-grid">
                     <button type="submit" className="btn btn-primary">
-                        Sign Up
+                        Log In
                     </button>
                 </div>
                 <ToastContainer />

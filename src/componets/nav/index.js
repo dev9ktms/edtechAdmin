@@ -143,6 +143,7 @@ function Nav(props) {
                 <li className="nav-item">
                   <Link
                     to="/account/testroute"
+                    onClick={validation}
                     className="nav-link"
                     aria-current="page"
                   >
@@ -152,6 +153,7 @@ function Nav(props) {
                 <li className="nav-item">
                   <Link
                     to="/account/testroute"
+                    onClick={validation}
                     className="nav-link"
                     aria-current="page"
                   >
@@ -161,6 +163,7 @@ function Nav(props) {
                 <li className="nav-item">
                   <Link
                     to="/account/testroute"
+                    onClick={validation}
                     className="nav-link"
                     aria-current="page"
                   >
@@ -170,6 +173,7 @@ function Nav(props) {
                 <li className="nav-item">
                   <Link
                     to="/account/testroute"
+                    onClick={validation}
                     className="nav-link"
                     aria-current="page"
                   >
@@ -179,6 +183,7 @@ function Nav(props) {
                 <li className="nav-item">
                   <Link
                     to="/account/testroute"
+                    onClick={validation}
                     className="nav-link"
                     aria-current="page"
                   >
@@ -188,6 +193,7 @@ function Nav(props) {
                 <li className="nav-item">
                   <Link
                     to="/account/testroute"
+                    onClick={validation}
                     className="nav-link"
                     aria-current="page"
                   >

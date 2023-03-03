@@ -11,7 +11,7 @@ const UpdatePassword = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("https://ed-tech-service-backend.onrender.com/passwordreset", {
+        const response = await fetch("https://ed-tech-service-backend.onrender.com/admin/passwordreset", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
