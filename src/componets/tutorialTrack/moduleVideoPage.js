@@ -48,7 +48,7 @@ const ModuleVideoPage = () => {
     console.log(json.success)
     setTimeout(() => {
       window.location.reload();
-    }, 5000);
+    }, 1000);
   };
 
 
