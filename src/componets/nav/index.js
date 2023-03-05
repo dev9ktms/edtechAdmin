@@ -24,7 +24,7 @@ function Nav(props) {
     userdeatils();
   }, []);
 
-  console.log(usercred);
+  // console.log("-----> ",usercred);
 
   const handleLogOut = async (e) => {
     e.preventDefault();
@@ -218,7 +218,7 @@ function Nav(props) {
                   aria-expanded="false"
                   style={{ background: "rgb(24 106 255)", paddingLeft: "20px", paddingRight: "20px", borderRadius: "50px" }}
                 >
-                  Hello {usercred.useremail}
+                  Hello {usercred.adminName}
                 </button>
                 <ul
                   className="dropdown-menu"

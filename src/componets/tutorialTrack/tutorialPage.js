@@ -3,7 +3,8 @@ import { useLocation } from "react-router-dom";
 import "./consult.css";
 import Nav from "../nav";
 import { useNavigate } from "react-router-dom";
-import Modal from "../modal/moduleCreation";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 const TutorialPage = () => {
   const location = useLocation();
@@ -11,7 +12,44 @@ const TutorialPage = () => {
   const num = location.state.portfolioSlug;
   const [data, setData] = useState([]);
   const [usercred, setUserCred] = useState([]);
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  const [description, setDescription] = useState("");
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
   const navigate = useNavigate();
+
+
+  const handleClose = () => {
+    setShow(false);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await fetch(
+      `https://ed-tech-service-backend.onrender.com/edcourse/addModule/${portfolioSlug}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+          adminToken: localStorage.getItem("adminToken"),
+        },
+        body: JSON.stringify({
+          moduleName: name,
+          moduleNumber: number,
+          moduleDescription: description,
+        }),
+      }
+    );
+    const json = await response.json();
+    console.log("==>", json)
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+  };
+
 
   const getPortfilio = async () => {
     const response = await fetch(
@@ -50,7 +88,68 @@ const TutorialPage = () => {
     <div>
       <Nav />
       <br />
-      {usercred.useremail === data.portfolioCreator ? <Modal /> : ""}
+      {usercred.useremail === data.portfolioCreator ?
+        <center>
+          <div className="btn-holder">
+            <Button variant="primary" onClick={handleShow}>
+              + Add Module
+            </Button>
+          </div>
+        </center>
+        :
+        ""}
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Module</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form method="POST" onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label>Module Name</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter Module Name"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="mb-3">
+              <label>Module Number</label>
+              <input
+                type="number"
+                className="form-control"
+                placeholder="Enter Module Number"
+                required
+                value={number}
+                onChange={(e) => setNumber(e.target.value)}
+              />
+            </div>
+            <div className="mb-3">
+              <label>Description</label>
+              <textarea
+                type="text"
+                className="form-control"
+                placeholder="Enter Description"
+                required
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+            <div className="d-grid">
+              <button
+                type="submit"
+                className="btn btn-primary"
+                onClick={handleClose}
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </Modal.Body>
+      </Modal>
 
       <div className="cards">
         <div className="card" key={data._id}>
