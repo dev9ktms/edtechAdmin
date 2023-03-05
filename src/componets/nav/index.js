@@ -218,7 +218,7 @@ function Nav(props) {
                   aria-expanded="false"
                   style={{ background: "rgb(24 106 255)", paddingLeft: "20px", paddingRight: "20px", borderRadius: "50px" }}
                 >
-                  Hello {usercred.adminName}
+                  Hello {usercred.adminname}
                 </button>
                 <ul
                   className="dropdown-menu"

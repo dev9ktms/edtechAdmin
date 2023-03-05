@@ -8,6 +8,7 @@ import Nav from '../nav'
 const SignUp = () => {
     const navigate = useNavigate();
     const [useremail, setUseremail] = useState("");
+    const [adminname, setAdminname] = useState("");
     const [password, setPassword] = useState("");
     const [secretKey, setSecretKey] = useState("");
 
@@ -22,11 +23,11 @@ const SignUp = () => {
                 "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify({
-                useremail, password, secretKey
+                useremail, adminname, password, secretKey
             }),
         });
         const json = await response.json();
-        console.log("=====>",json);
+        console.log("=====>", json);
         if (json.success === true) {
             setTimeout(() => {
                 toast.success(
@@ -62,6 +63,19 @@ const SignUp = () => {
                         minLength="2"
                         value={useremail}
                         onChange={(e) => setUseremail(e.target.value)}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label>Admin Name</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Enter admin name"
+                        required
+                        maxLength="50"
+                        minLength="2"
+                        value={adminname}
+                        onChange={(e) => setAdminname(e.target.value)}
                     />
                 </div>
                 <div className="mb-3">
