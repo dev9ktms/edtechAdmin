@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import './nav.css';
 import { ToastContainer, toast } from "react-toastify";
-
+// import { NavLink } from 'react-router-dom';
 function Nav(props) {
   const navigate = useNavigate();
 

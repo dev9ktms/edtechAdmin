@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-// import Record_home from "./record_home.json";
 import './home.css';
 import Nav from '../nav';
 
@@ -21,7 +20,6 @@ function Index() {
     e.preventDefault();
     setFile(
       e.target.files[0],
-      // loaded: 0,
     );
   };
   const handleSubmit = async (e) => {
@@ -57,8 +55,6 @@ function Index() {
   useEffect(() => {
     getVideo();
   }, []);
-
-  console.log("==> ", datav)
 
   const Record_home = datav;
 
@@ -109,7 +105,7 @@ function Index() {
         {Record_home &&
           Record_home.map((record) => {
             return (
-              <span className="home-body" key={record.id}>
+              <div className="home-body" key={record.id}>
                 <video
                         width="100%"
                         height="100%"
@@ -119,7 +115,7 @@ function Index() {
                         controls
                         controlsList="nodownload"
                       ></video>
-              </span>
+              </div>
             );
           })}
       </div>
