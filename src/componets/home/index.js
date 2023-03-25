@@ -62,19 +62,17 @@ function Index() {
     <>
       <Nav />
       <div>
-
-        <center>
+        {!localStorage.adminToken ? "" : <center>
           <div className="btn-holder" style={{ paddingTop: "10px" }}>
             <Button variant="primary" onClick={handleShow}>
               + Add Video
             </Button>
           </div>
-        </center>
-
+        </center>}
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Add Video</Modal.Title>
+            <Modal.Title>Add Home Videos</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form method="POST">
@@ -102,23 +100,24 @@ function Index() {
           </Modal.Body>
         </Modal>
         <div className="home">
-        {Record_home &&
-          Record_home.map((record) => {
-            return (
-              <div className="home-body" key={record.id}>
-                <video
-                        width="100%"
-                        height="100%"
-                        src={record.videoLink}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        controls
-                        controlsList="nodownload"
-                      ></video>
-              </div>
-            );
-          })}
-      </div>
+          {Record_home &&
+            Record_home.map((record) => {
+              return (
+                <div className="home-body" key={record.id}>
+                  <video
+                    width="100%"
+                    height="100%"
+                    src={record.videoLink}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    controls
+                    controlsList="nodownload"
+                  ></video>
+
+                </div>
+              );
+            })}
+        </div>
       </div>
 
     </>
