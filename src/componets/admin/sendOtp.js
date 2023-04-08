@@ -44,9 +44,9 @@ const SendOtp = () => {
 
     return (
         <>
-            
+
             <form method="POST" onSubmit={handleSubmit}>
-                
+
 
                 <div className="mb-3">
                     <label>UserEmail</label>

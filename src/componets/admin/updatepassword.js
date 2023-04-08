@@ -95,7 +95,7 @@ const UpdatePassword = () => {
                     </button>
                 </div>
 
-                
+
                 <ToastContainer />
             </form>
         </>

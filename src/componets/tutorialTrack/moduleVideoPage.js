@@ -300,7 +300,7 @@ const ModuleVideoPage = () => {
         pdf.map((item) => {
           return (
             <div key={item._id}>
-              <h2 style={{ cursor: 'pointer' }}  onClick={onClickUrl(item.pdfLink)}>{item.pdfName}</h2>
+              <h2 style={{ cursor: 'pointer' }} onClick={onClickUrl(item.pdfLink)}>{item.pdfName}</h2>
             </div>
           );
         })}

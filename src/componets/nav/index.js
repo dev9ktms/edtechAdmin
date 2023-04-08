@@ -30,7 +30,9 @@ function Nav(props) {
     e.preventDefault();
     localStorage.removeItem("adminToken");
     navigate("/");
-
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   }
   const validation = async (e) => {
     e.preventDefault();

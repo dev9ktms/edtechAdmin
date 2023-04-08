@@ -6,10 +6,12 @@ import Nav from '../nav';
 
 function Index() {
 
+  const [usercred, setUserCred] = useState([]);
   const [uploadButtonText, setUploadButtonText] = useState("Upload Video");
-  const [file, setFile] = useState(null);
   const [show, setShow] = useState(false);
   const [datav, setDatav] = useState([]);
+  const [isSelected, setIsSelected] = useState(false)
+  const [file, setFile] = useState(null);
   const handleShow = () => setShow(true);
 
   const handleClose = () => {
@@ -20,7 +22,9 @@ function Index() {
     e.preventDefault();
     setFile(
       e.target.files[0],
+      // loaded: 0,
     );
+    setIsSelected(true);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +34,10 @@ function Index() {
       `https://ed-tech-service-backend.onrender.com/homevideo/uploadhomevideo`,
       {
         method: "POST",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          adminToken: localStorage.getItem("adminToken"),
+        },
         body: formData,
       }
     );
@@ -39,6 +47,20 @@ function Index() {
     setTimeout(() => {
       window.location.reload();
     }, 1000);
+  };
+
+  const userdeatils = async () => {
+    const response = await fetch(
+      "https://ed-tech-service-backend.onrender.com/admin/getadmin",
+      {
+        method: "GET",
+        headers: {
+          adminToken: localStorage.getItem("adminToken"),
+        },
+      }
+    );
+    const json = await response.json();
+    setUserCred(json);
   };
 
   const getVideo = async () => {
@@ -52,8 +74,21 @@ function Index() {
     setDatav(json);
   };
 
+  const delVideo = async (videoSlug) => {
+    const response = await fetch(
+      `https://ed-tech-service-backend.onrender.com/homevideo/${videoSlug}`,
+      {
+        method: "DELETE",
+      }
+    );
+    console.log("res => ", response);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  };
   useEffect(() => {
     getVideo();
+    userdeatils();
   }, []);
 
   const Record_home = datav;
@@ -86,6 +121,20 @@ function Index() {
                     onChange={onChangeHandler}
                     hidden />
                 </label>
+                {isSelected ? (
+                  <div>
+                    <h2>File Details</h2>
+                    <p>Filename: {file.name}</p>
+                    <p>Filetype: {file.type}</p>
+                    <p>Size in bytes: {file.size}</p>
+                    <p>
+                      lastModifiedDate:{' '}
+                      {file.lastModifiedDate.toLocaleDateString()}
+                    </p>
+                  </div>
+                ) : (
+                  <p>Select a file to show details</p>
+                )}
               </div>
               <div className="d-grid">
                 <button
@@ -113,6 +162,19 @@ function Index() {
                     controls
                     controlsList="nodownload"
                   ></video>
+                  <div class="d-flex justify-content-center">
+                    <p> Created By : {record.videoCreator}</p>
+                    {usercred.useremail === record.videoCreator ? (
+                      <button
+                        type="button"
+                        className="btn-close"
+                        aria-label="Close"
+                        onClick={() => { delVideo(record.videoSlug); }}
+                      ></button>
+                    ) : (
+                      ""
+                    )}
+                  </div>
 
                 </div>
               );

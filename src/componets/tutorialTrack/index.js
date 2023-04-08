@@ -41,7 +41,7 @@ function Index() {
       }
     );
     const json = await response.json();
-    console.log("--> ",json)
+    console.log("--> ", json)
     setTimeout(() => {
       window.location.reload();
     }, 2000);
